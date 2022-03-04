@@ -16,6 +16,7 @@ RUN set -ex; \
 		cron \
 		pgbackrest=${PGBACKREST_VERSION} \
 		postgresql-client-${POSTGRES_VERSION}; \
+	chown pgbackrest:pgbackrest /var/lib/pgbackrest; \
 	apt-get purge -y gnupg2 lsb-release; \
 	rm -rf /var/lib/apt/lists/*
 
