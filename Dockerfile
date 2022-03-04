@@ -4,9 +4,6 @@ ARG POSTGRES_VERSION=14
 ARG PGBACKREST_VERSION=2.37-1.pgdg110+1
 
 RUN set -ex; \
-        groupadd -r pgbackrest --gid=102 && useradd -r -g pgbackrest -d /var/lib/pgbackrest --uid=101 -s /bin/bash pgbackrest
-
-RUN set -ex; \
 	apt-get update; \
 	DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends lsb-release gnupg2 xz-utils ca-certificates curl; \
 	curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/apt.postgresql.org.gpg >/dev/null; \
@@ -16,7 +13,6 @@ RUN set -ex; \
 		cron \
 		pgbackrest=${PGBACKREST_VERSION} \
 		postgresql-client-${POSTGRES_VERSION}; \
-	chown pgbackrest:pgbackrest /var/lib/pgbackrest; \
 	apt-get purge -y gnupg2 lsb-release; \
 	rm -rf /var/lib/apt/lists/*
 
