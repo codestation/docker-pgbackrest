@@ -12,8 +12,6 @@ steps:
     image: ghcr.io/codestation/drone-docker
     settings:
       buildkit: true
-      cache: 
-        - registry.megpoid.xyz/codestation/pgbackrest:${DRONE_BRANCH}-cache
       registry: registry.megpoid.xyz
       repo: registry.megpoid.xyz/codestation/pgbackrest
       tags: latest
@@ -21,9 +19,6 @@ steps:
         from_secret: docker_username
       password:
         from_secret: docker_password
-    environment:
-      GOPROXY:
-        from_secret: goproxy_url
 
   - name: update
     image: plugins/webhook
