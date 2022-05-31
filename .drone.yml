@@ -14,7 +14,9 @@ steps:
       buildkit: true
       registry: registry.megpoid.xyz
       repo: registry.megpoid.xyz/codestation/pgbackrest
-      tags: latest
+      tags:
+        - 2.39
+        - latest
       username:
         from_secret: docker_username
       password:
@@ -29,7 +31,7 @@ steps:
       template: |
         {
           "images": [
-            "registry.megpoid.xyz/codestation/pgbackrest:latest"
+            "registry.megpoid.xyz/codestation/pgbackrest"
           ]
         }
 
