@@ -12,10 +12,10 @@ steps:
     image: ghcr.io/codestation/drone-docker
     settings:
       buildkit: true
-      registry: registry.megpoid.xyz
-      repo: registry.megpoid.xyz/codestation/pgbackrest
+      registry: registry.megpoid.dev
+      repo: registry.megpoid.dev/codestation/pgbackrest
       tags:
-        - 2.39
+        - 2.40
         - latest
       username:
         from_secret: docker_username
@@ -31,7 +31,7 @@ steps:
       template: |
         {
           "images": [
-            "registry.megpoid.xyz/codestation/pgbackrest"
+            "registry.megpoid.dev/codestation/pgbackrest"
           ]
         }
 
