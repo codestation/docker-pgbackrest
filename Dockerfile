@@ -3,8 +3,8 @@ FROM debian:bullseye
 LABEL maintainer="codestation <codestation@megpoid.dev>"
 
 ARG POSTGRES_VERSION=14
-ARG BACKREST_VERSION=2.40-2.pgdg110+1
-ARG S6_OVERLAY_VERSION=3.1.0.1
+ARG BACKREST_VERSION=2.40-3.pgdg110+1
+ARG S6_OVERLAY_VERSION=3.1.2.1
 
 RUN set -ex; \
 	groupadd -r pgbackrest --gid=999; \
