@@ -3,7 +3,7 @@ FROM debian:bullseye
 LABEL maintainer="codestation <codestation@megpoid.dev>"
 
 ARG POSTGRES_VERSION=14
-ARG BACKREST_VERSION=2.40-3.pgdg110+1
+ARG BACKREST_VERSION=2.41
 ARG S6_OVERLAY_VERSION=3.1.2.1
 
 RUN set -ex; \
@@ -18,7 +18,7 @@ RUN set -ex; \
 	apt-get update; \
 	DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
 		cron \
-		pgbackrest=${BACKREST_VERSION} \
+		pgbackrest=${BACKREST_VERSION}-* \
 		postgresql-client-${POSTGRES_VERSION} \
 	; \
 	apt-get purge -y gnupg2 lsb-release; \
