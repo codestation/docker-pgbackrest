@@ -3,7 +3,7 @@ FROM debian:bullseye
 LABEL maintainer="codestation <codestation@megpoid.dev>"
 
 ARG POSTGRES_VERSION=14
-ARG BACKREST_VERSION=2.43
+ARG BACKREST_VERSION=2.44
 ARG S6_OVERLAY_VERSION=3.1.2.1
 
 RUN set -ex; \
