@@ -1,7 +1,7 @@
 ---
 kind: pipeline
 name: default
-type: docker
+type: kubernetes
 
 platform:
   os: linux
@@ -9,31 +9,18 @@ platform:
 
 steps:
   - name: build
-    image: ghcr.io/codestation/drone-docker
+    image: ghcr.io/codestation/drone-kaniko
     settings:
       buildkit: true
       registry: registry.megpoid.dev
       repo: registry.megpoid.dev/codestation/pgbackrest
       tags:
-        - 2.47
+        - 2.50
         - latest
       username:
         from_secret: docker_username
       password:
         from_secret: docker_password
-
-  - name: update
-    image: plugins/webhook
-    settings:
-      urls: http://updater:8000/apis/swarm/v1/update
-      token_value:
-        from_secret: updater_appkey
-      template: |
-        {
-          "images": [
-            "registry.megpoid.dev/codestation/pgbackrest"
-          ]
-        }
 
 trigger:
   branch:

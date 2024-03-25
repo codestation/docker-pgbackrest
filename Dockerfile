@@ -1,14 +1,16 @@
-FROM debian:bullseye
+FROM debian:bookworm
 
 LABEL maintainer="codestation <codestation@megpoid.dev>"
 
 ARG POSTGRES_VERSION=14
-ARG BACKREST_VERSION=2.47
+ARG BACKREST_VERSION=2.50
 ARG S6_OVERLAY_VERSION=3.1.5.0
 
 RUN set -ex; \
-	groupadd -r pgbackrest --gid=999; \
-	useradd -r -g pgbackrest -d /var/lib/pgbackrest --uid=999 -s /bin/bash pgbackrest
+	groupadd -r postgres --gid=999; \
+	useradd -r -g postgres --uid=999 --home-dir=/var/lib/postgresql --shell=/bin/bash postgres; \
+	mkdir -p /var/lib/postgresql; \
+	chown -R postgres:postgres /var/lib/postgresql
 
 RUN set -ex; \
 	apt-get update; \
@@ -22,8 +24,6 @@ RUN set -ex; \
 		postgresql-client-${POSTGRES_VERSION} \
 	; \
 	apt-get purge -y gnupg2 lsb-release; \
-	chown pgbackrest:pgbackrest /var/log/pgbackrest; \
-	chown pgbackrest:pgbackrest /var/lib/pgbackrest; \
 	rm -rf /var/lib/apt/lists/*
 
 RUN set -ex; \
