@@ -3,8 +3,8 @@ FROM debian:bookworm
 LABEL maintainer="codestation <codestation@megpoid.dev>"
 
 ARG POSTGRES_VERSION=14
-ARG BACKREST_VERSION=2.50
-ARG S6_OVERLAY_VERSION=3.1.5.0
+ARG BACKREST_VERSION=2.51
+ARG S6_OVERLAY_VERSION=3.1.6.2
 
 RUN set -ex; \
 	groupadd -r postgres --gid=999; \
