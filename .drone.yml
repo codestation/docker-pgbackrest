@@ -15,7 +15,7 @@ steps:
       registry: registry.megpoid.dev
       repo: registry.megpoid.dev/codestation/pgbackrest
       tags:
-        - 2.51
+        - 2.53
         - latest
       username:
         from_secret: docker_username
