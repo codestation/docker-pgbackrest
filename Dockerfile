@@ -2,9 +2,9 @@ FROM debian:bookworm
 
 LABEL maintainer="codestation <codestation@megpoid.dev>"
 
-ARG POSTGRES_VERSION=16
-ARG BACKREST_VERSION=2.53.1
-ARG S6_OVERLAY_VERSION=3.2.0.0
+ARG POSTGRES_VERSION=17
+ARG PGBACKREST_VERSION=2.54.2
+ARG S6_OVERLAY_VERSION=3.2.0.2
 
 RUN set -ex; \
 	groupadd -r postgres --gid=999; \
@@ -20,7 +20,7 @@ RUN set -ex; \
 	apt-get update; \
 	DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
 		cron \
-		pgbackrest=${BACKREST_VERSION}-* \
+		pgbackrest=${PGBACKREST_VERSION}-* \
 		postgresql-client-${POSTGRES_VERSION} \
 	; \
 	apt-get purge -y gnupg2 lsb-release; \
