@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         postgres_version: [14, 15, 16, 17]
-        pgbackrest_version: [2.54.2]
+        pgbackrest_version: [2.55.1]
 
     steps:
       - name: Checkout repository

@@ -2,17 +2,17 @@ matrix:
   POSTGRES_VERSION:
     - 17
   PGBACKREST_VERSION:
-    - 2.54.2
+    - 2.55.1
 
 steps:
   build:
-    image: woodpeckerci/plugin-docker-buildx:5.2.1
+    image: woodpeckerci/plugin-docker-buildx:6.0.1
     settings:
       registry: registry.megpoid.dev
       repo: registry.megpoid.dev/codestation/pgbackrest
       tags:
-        - ${PGBACKREST_VERSION}-postgres${POSTGRES_VERSION}
         - latest
+        - ${PGBACKREST_VERSION}-postgres${POSTGRES_VERSION}
       build_args:
         - POSTGRES_VERSION=${POSTGRES_VERSION}
         - PGBACKREST_VERSION=${PGBACKREST_VERSION}
@@ -24,4 +24,4 @@ when:
     - push
     - manual
   branch:
-  - master
+    - master
